@@ -90,7 +90,6 @@ pets = {
         },
 }
 
-
 def create():
     last = collections.deque(pets, maxlen = 1)[0]
     name = input('Введите кличку питомца: ')
@@ -113,7 +112,7 @@ def read():
         name = list(pets[pet_id].keys())[0]
         info = pets[pet_id][name]
         age_suffix = get_suffix(info["Возраст питомца"])
-        print('Это', info["Вид питомца"], 'по кличке', '"{[name]}"' + '. Возраст питомца:', info["Возраст питомца"], age_suffix + ". Имя владельца:", info["Имя владельца"])
+        print(f'Это {info["Вид питомца"]} по кличке "{name}". Возраст питомца: {info["Возраст питомца"]} {age_suffix}. Имя владельца: {info["Имя владельца"]}')
     else:
         print('Питомца с таким номером нет в базе данных')
 
@@ -136,21 +135,23 @@ def delete():
     else:
         print('Питомца с таким номером нет в базе данных')
 
-def get_pet(pet_id):
-    return pets[pet_id] if pet_id in pets.keys() else False
+def get_pet(ID):
+    if ID in pets.keys():
+        return pets[ID]
+    else: 
+        return False
 
 def get_suffix(age):
-    age_number = age % 10
-    if age_number == 1 and (age < 10 or age > 20):
-        return 'год'
-    elif 2 <= age_number <= 4 and (age < 10 or age > 20):
-        return 'года'
+    if age == 1:
+        return "год"
+    elif age in [2, 3, 4]:
+        return "года"
     else:
-        return 'лет'
+        return "лет"
 
 def pets_list():
-    for pet_id, info in pets.items():
-        print(pet_id, info)
+    for pet_id, pet in pets.items():
+        print(pet_id, pet)
 
 print('Команды: create, read, update, delete, list, stop')
 command = input('Введите команду: ')
@@ -171,3 +172,4 @@ while command != 'stop':
     else:
         print('Неправильная команда')
     command = input('Введите команду: ')
+
