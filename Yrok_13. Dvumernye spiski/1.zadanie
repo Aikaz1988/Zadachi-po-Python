@@ -82,20 +82,19 @@ matrix_2 = [[0, 4, 6, 11, 15, 6, 9, 26, 15, 21],
 [32, -67, -75, -92, 15, -163, 18, 31, -162, -16]]
 
 # Вывести матрицу matrix_1 и matrix_2 на экран
-print('Matrix_1 = ')
+print('\nMatrix_1 = ')
 for i in matrix_1:
     print(i)
-print('\n')
-print('Matrix_2 = ')
+print('\nMatrix_2 = ')
 for i in matrix_2:
     print(i)
-# Сложим матрицы matrix_1 и matrix_2 и выведем результат в matrix_3
 
-matrix_3 = [[matrix_1[i][j] + matrix_2[i][j] for j in range(len(matrix_1[0]))] for i in range(len(matrix_1))]
+# Сложим матрицы matrix_1 и matrix_2 и выведем результат в matrix_3
+matrix_3 = [[matrix_1[i][j] + matrix_2[i][j] for j in range(len(matrix_1))] for i in range(len(matrix_2))]
 
 print('\nРезультат сложения двух матриц: ')
-for n in matrix_3:
-    print(n)
+for row in matrix_3:
+    print(row)
 
 
 Вариант 2
@@ -106,17 +105,16 @@ m = int(input('m = '))
 n = int(input('n = '))
 
 matrix_1 = [[random.randint(1, 11) for j in range(n)] for i in range(m)]
-print('Matrix 1: ')
+print('Matrix 1:')
 for i in range(m):
     print(matrix_1[i])
 
-matrix_2 = [[random.randint(1, 11) for j in range(n)] for i in range(m)]
-print('\nMatrix 2: ')
-for i in range(m):
+matrix_2 = [[random.randint(1, 11) for j in range(m)] for i in range(n)]
+print('\nMatrix 2:')
+for i in range(n):
     print(matrix_2[i])
 
-matrix_3 = [[matrix_1[i][j] + matrix_2[i][j] for j in range(len(matrix_1[0]))] for i in range(len(matrix_1))]
-
-print('\nРезультат сложения двух матриц: ')
-for n in matrix_3:
-    print(n)
+matrix_3 = [[matrix_1[i][j] + matrix_2[i][j] for j in range(n)] for i in range(m)]
+print('\nРезультат сложения двух матриц:')
+for row in matrix_3:
+    print(row)
