@@ -58,6 +58,8 @@
 # Задание считается выполненным, если вы напишите алгоритм, 
 # который будет уметь как складывать матрицы, так и генерировать матрица различных размерностей. 
 # Будь то матрицы 10х10 или 4х3
+#############################################
+Вариант 1
 
 matrix_1 = [[0, -2, -1, -6, -6, 0, -9, -8, -30, -9],
 [5, 12, 4, -16, -4, -9, -16, -15, 1, -26],
@@ -91,12 +93,10 @@ for i in matrix_2:
 
 # Сложим матрицы matrix_1 и matrix_2 и выведем результат в matrix_3
 matrix_3 = [[matrix_1[i][j] + matrix_2[i][j] for j in range(len(matrix_1))] for i in range(len(matrix_2))]
-
 print('\nРезультат сложения двух матриц: ')
 for row in matrix_3:
     print(row)
-
-
+###########################################
 Вариант 2
 
 import random
@@ -109,9 +109,9 @@ print('Matrix 1:')
 for i in range(m):
     print(matrix_1[i])
 
-matrix_2 = [[random.randint(1, 11) for j in range(m)] for i in range(n)]
+matrix_2 = [[random.randint(1, 11) for j in range(n)] for i in range(m)]
 print('\nMatrix 2:')
-for i in range(n):
+for i in range(m):
     print(matrix_2[i])
 
 matrix_3 = [[matrix_1[i][j] + matrix_2[i][j] for j in range(n)] for i in range(m)]
