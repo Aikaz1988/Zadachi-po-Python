@@ -11,6 +11,8 @@
 # count_moves(x2, y2) - возвращает минимальное количество действий, 
 # за которое черепашка сможет добраться до x2 y2 от текущей позиции
 
+import math
+
 class Turtle:
     def __init__(self, x, y, s):
         self.x = x
@@ -18,33 +20,36 @@ class Turtle:
         self.s = s
     
     def go_up(self):
-        self.y += self.s
+        self.y += self.s # go_up() - увеличивает y на s
         return self.y
-
+    
     def go_down(self):
-        self.y -= self.s
+        self.y -= self.s # go_down() - уменьшает y на s
         return self.y
-
+    
     def go_left(self):
-        self.x -= self.s
+        self.x -= self.s # go_left() - уменьшает x на s
         return self.x
-
+    
     def go_right(self):
-        self.x += self.s
-        return self.x
-
+        self.y += self.s # go_right() - увеличивает y на s
+        return self.y
+    
     def evolve(self):
-        self.s += 1
+        self.s += 1 # evolve() - увеличивает s на 1
         return self.s
-
+    
     def degrade(self):
-        if self.s <= 0:
-            print('s = 0')
-        self.s -= 1
-        return self.s
-
+        if self.s <= 1:
+            raise ValueError('s не может стать <= 0')
+        else:
+            self.s -= 1 # degrade() - уменьшает s на 1 или выкидывает ошибку, когда s может стать ≤ 0
+            return self.s
+        
+    # count_moves(x2, y2) - возвращает минимальное количество действий, за которое черепашка сможет добраться до x2 y2 от текущей позиции
     def count_moves(self, x2, y2):
-        return self.x - x2, self.y - y2
+        distance = math.sqrt((x2 - self.x)**2 + (y2 - self.y)**2)
+        return math.ceil(distance / self.s)
 
 r = Turtle(5, 15, 26)
 print(r.go_up())
